@@ -1,0 +1,6 @@
+{
+  "authentication_type": null,
+  "guniflask_version": "0.6.1",
+  "port": 8081,
+  "project_name": "uaa"
+}
