@@ -10,7 +10,8 @@ from guniflask.oauth2 import InMemoryClientDetailsService, TokenStore, JwtTokenS
     ClientDetails
 from guniflask.config import settings
 from guniflask.security import PasswordEncoder, AuthenticationManager, UserDetailsService
-from guniflask.security_config import enable_web_security, WebSecurityConfigurer, AuthenticationManagerBuilder
+from guniflask.security_config import enable_web_security, WebSecurityConfigurer, AuthenticationManagerBuilder, \
+    HttpSecurity
 
 from uaa.security.password_encoder import BcryptPasswordEncoder
 
@@ -57,15 +58,15 @@ class UaaAuthorizationConfiguration(AuthorizationServerConfigurerAdapter):
         return token_converter
 
 
-@configuration
-@enable_resource_server
-class UaaResourceConfiguration(ResourceServerConfigurerAdapter):
-
-    def __init__(self, token_store: TokenStore):
-        self._token_store = token_store
-
-    def configure_security(self, resources: ResourceServerSecurityConfigurer):
-        resources.with_token_store(self._token_store)
+# @configuration
+# @enable_resource_server
+# class UaaResourceConfiguration(ResourceServerConfigurerAdapter):
+#
+#     def __init__(self, token_store: TokenStore):
+#         self._token_store = token_store
+#
+#     def configure_security(self, resources: ResourceServerSecurityConfigurer):
+#         resources.with_token_store(self._token_store)
 
 
 @configuration
@@ -78,6 +79,11 @@ class UaaWebSecurityConfiguration(WebSecurityConfigurer):
         authentication_manager_builder \
             .with_user_details_service(user_details_service) \
             .with_password_encoder(self._password_encoder)
+
+    def configure_http(self, http: HttpSecurity):
+        cors = settings.get_by_prefix('guniflask.cors')
+        if cors:
+            http.cors(cors)
 
     @bean
     def password_encoder(self) -> PasswordEncoder:
