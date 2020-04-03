@@ -58,15 +58,15 @@ class UaaAuthorizationConfiguration(AuthorizationServerConfigurerAdapter):
         return token_converter
 
 
-# @configuration
-# @enable_resource_server
-# class UaaResourceConfiguration(ResourceServerConfigurerAdapter):
-#
-#     def __init__(self, token_store: TokenStore):
-#         self._token_store = token_store
-#
-#     def configure_security(self, resources: ResourceServerSecurityConfigurer):
-#         resources.with_token_store(self._token_store)
+@configuration
+@enable_resource_server
+class UaaResourceConfiguration(ResourceServerConfigurerAdapter):
+
+    def __init__(self, token_store: TokenStore):
+        self._token_store = token_store
+
+    def configure_security(self, resources: ResourceServerSecurityConfigurer):
+        resources.with_token_store(self._token_store)
 
 
 @configuration
