@@ -1,4 +1,6 @@
-guniflask[app]
-pymysql>=0.9.3
+guniflask
+guniflask-cli
+Flask-SQLAlchemy>=2.4.1
+PyMySQL>=0.9.3
 bcrypt>=3.1.7
 cryptography>=2.8

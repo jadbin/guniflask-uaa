@@ -1,6 +1,7 @@
 {
+  "application_type": "monolithic",
   "authentication_type": null,
-  "guniflask_version": "0.6.1",
+  "cli_version": "0.1.0",
   "port": 8081,
   "project_name": "uaa"
 }
