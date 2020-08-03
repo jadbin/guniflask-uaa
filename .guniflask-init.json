@@ -1,7 +1,6 @@
 {
-  "application_type": "monolithic",
   "authentication_type": null,
-  "cli_version": "0.1.0",
+  "cli_version": "0.8.0",
   "port": 8081,
   "project_name": "uaa"
 }

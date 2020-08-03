@@ -11,4 +11,3 @@ def get_current_username():
             return principal.username
         if isinstance(principal, str):
             return principal
-

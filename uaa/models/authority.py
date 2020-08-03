@@ -1,11 +1,12 @@
 # coding=utf-8
 
+from guniflask.orm import BaseModelMixin
 from sqlalchemy import text as _text
 
 from uaa import db
 
 
-class Authority(db.Model):
+class Authority(BaseModelMixin, db.Model):
     __tablename__ = 'authority'
 
     name = db.Column(db.String(50), primary_key=True)

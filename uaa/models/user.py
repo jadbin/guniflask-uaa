@@ -1,14 +1,15 @@
 # coding=utf-8
 
+from guniflask.orm import BaseModelMixin
 from sqlalchemy import text as _text
 
 from uaa import db
 
 
-class User(db.Model):
+class User(BaseModelMixin, db.Model):
     __tablename__ = 'user'
 
-    id = db.Column(db.BigInteger, primary_key=True)
+    id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
     login = db.Column(db.String(50), nullable=False, unique=True, index=True)
     password_hash = db.Column(db.String(60))
     email = db.Column(db.String(100), unique=True, index=True)
