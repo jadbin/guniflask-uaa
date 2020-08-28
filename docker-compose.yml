@@ -3,4 +3,4 @@ services:
   uaa:
     build: .
     ports:
-      - 8081:8081
+      - 8401:8401
