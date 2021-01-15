@@ -1,6 +1,6 @@
 {
   "authentication_type": null,
-  "cli_version": "0.8.9",
+  "cli_version": "0.9.0",
   "port": 8401,
   "project_name": "uaa"
 }
